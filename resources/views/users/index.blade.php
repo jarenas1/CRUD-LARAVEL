@@ -10,7 +10,7 @@
 </head>
 <body>
 <div class="container">
-    <div class="row">
+y    <div class="row">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
@@ -19,6 +19,7 @@
                             <strong>Bien hecho!</strong> {{ session('success') }}
                         </div>
                     @endif
+                    
                     <div class="table-responsive">
                         <table class="table table-striped table-hover ">
                             <thead>

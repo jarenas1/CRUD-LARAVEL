@@ -68,19 +68,12 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-         // Validar los datos del formulario
-         $request->validate([
-            'names' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email,'.$id,
-            
-        ]);
-
         // Buscar el usuario por ID y actualizar sus datos
         $user = User::findOrFail($id);
         $user->update($request->all());
 
         // Redirigir al usuario a la lista o a otra página con un mensaje de éxito
-        return redirect()->route('users.index')->with('success', 'Usuario actualizado correctamente.');
+        return back()->with('success', 'Usuario actualizado correctamente.');
     }
 
     /**
