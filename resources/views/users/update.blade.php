@@ -4,18 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Modificar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Editar</title>
 </head>
 <body>
-    <form action="">
-        <input type="text" id="name" placeholder="Nombre">
-        <input type="text" id="lastname" placeholder="Apellido">
-        <input type="text" id="email" placeholder="Correo">
-        <input type="text" id="adress" placeholder="Direccion">
+    <div class="container">
+        <h1 class="text-center mt-5">Editar Usuario</h1>
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
 
-        <button type="submit">Modificar</button>
-    </form>
+        {{-- Formulario de edición --}}
+        <form action="{{ route('usuarios.update', $user->id) }}" method="POST">
+            @csrf
+            @method('PUT')
 
-    <a href="{{ route('usuarios.index') }}"> Volver al home</a>
+            <div class="mb-3">
+                <label for="names" class="form-label">Nombres</label>
+                <input type="text" name="names" class="form-control" id="names" value="{{ $user->names }}" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="email" class="form-label">Correo Electrónico</label>
+                <input type="email" name="email" class="form-control" id="email" value="{{ $user->email }}" required>
+            </div>
+
+            {{-- Agrega más campos según la estructura de tu tabla --}}
+
+            <button type="submit" class="btn btn-primary">Actualizar</button>
+        </form>
+    </div>
+
 </body>
 </html>

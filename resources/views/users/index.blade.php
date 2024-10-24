@@ -43,7 +43,7 @@
                                            @method('DELETE')
                                            @csrf
                                            <a href="{{ route('usuarios.show', $user->id) }}" class="btn btn-sm btn-info">Detalles</a>
-                                           <a href="" class="btn btn-sm btn-warning">Editar</a>
+                                           <a href="{{ route('usuarios.edit', $user->id) }}" class="btn btn-sm btn-warning">Editar</a>
                                            <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
                                        </form>
                                    </td>
